@@ -20,10 +20,23 @@ RUN curl -k "https://apt.mopidy.com/buster.list" > /etc/apt/sources.list.d/mopid
 RUN apt-get update && \
     apt-get install -y -f \
        mopidy \
-       mopidy-spotify 
+       mopidy-spotify \
+       mopidy-local \
+       mopidy-local-sqlite \
+       mopidy-mpd \
+       mopidy-podcast \
+       mopidy-podcast-itunes \
+       mopidy-scrobbler \
+       mopidy-somafm \
+       mopidy-soundcloud \
+       mopidy-tunein
 RUN python3 -m pip install git+https://github.com/natumbri/mopidy-youtube.git
 RUN python3 -m pip install Mopidy-YTMusic
 RUN python3 -m pip install Mopidy-Iris
+
+RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp \
+    && chmod a+rx /usr/local/bin/yt-dlp
+
 RUN mkdir -p /data/music
 EXPOSE 6680 6600
 CMD ["/usr/bin/mopidy"]
