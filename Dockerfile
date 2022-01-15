@@ -33,6 +33,7 @@ RUN apt-get update && \
 RUN python3 -m pip install git+https://github.com/natumbri/mopidy-youtube.git
 RUN python3 -m pip install Mopidy-YTMusic
 RUN python3 -m pip install Mopidy-Iris
+RUN python3 -m pip install Mopidy-Party
 
 RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp \
     && chmod a+rx /usr/local/bin/yt-dlp
